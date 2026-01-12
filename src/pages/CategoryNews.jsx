@@ -28,7 +28,7 @@ const CategoryNews = () => {
      
     
     return (
-        <div>
+        <div className=' space-y-4'>
             {
                 news.map(n=><NewsCard key={n.id} news={n} />)
             }

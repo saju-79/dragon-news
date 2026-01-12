@@ -1,5 +1,7 @@
-// import { FaStar, FaEye, FaBookmark, FaShareAlt } from "react-icons/fa";
-import { CiShare2 } from "react-icons/ci";
+import { CiBookmark, CiShare2 } from "react-icons/ci";
+import { FaEye, FaStar } from "react-icons/fa";
+
+ 
 
 const NewsCard = ({ news }) => {
   if (!news) return null;
@@ -17,7 +19,7 @@ const NewsCard = ({ news }) => {
   return (
     <div className="card bg-base-100 shadow-md border border-base-200">
       {/* Author Header */}
-      <div className="flex items-center justify-between p-4 border-b">
+      <div className="flex items-center justify-between p-4 bg-neutral">
         <div className="flex items-center gap-3">
           <img
             src={author?.img}
@@ -32,9 +34,10 @@ const NewsCard = ({ news }) => {
           </div>
         </div>
 
-        <div className="flex gap-3 text-gray-500">
-            <CiShare2 />
-         {/*  <FaBookmark className="cursor-pointer" />
+        <div className="flex gap-5 text-gray-500">
+          <CiBookmark size={26} />
+           <CiShare2 size={26} />
+        {/*   <FaBookmark className="cursor-pointer" />
           <FaShareAlt className="cursor-pointer" /> */}
         </div>
       </div>
@@ -74,12 +77,12 @@ const NewsCard = ({ news }) => {
         <div className="flex items-center justify-between border-t pt-4 mt-4">
           {/* Rating */}
           <div className="flex items-center gap-1 text-orange-500">
-           {/*  {[...Array(5)].map((_, i) => (
+            {[...Array(5)].map((_, i) => (
               <FaStar
                 key={i}
                 className={i < rating?.number ? "" : "text-gray-300"}
               />
-            ))} */}
+            ))}  
             <span className="text-gray-600 ml-2">
               {rating?.number}.0
             </span>
@@ -87,7 +90,7 @@ const NewsCard = ({ news }) => {
 
           {/* Views */}
           <div className="flex items-center gap-2 text-gray-500">
-            {/* <FaEye /> */}
+            <FaEye />
             <span>{total_view}</span>
           </div>
         </div>
