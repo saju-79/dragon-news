@@ -18,12 +18,10 @@ import CategoryNews from "../pages/CategoryNews";
             path:'/' ,
            element:<Home></Home>
         },
-        {path:'/caterogy/:id' , element: <CategoryNews></CategoryNews>},
-       
-
-
-   {path:'/about' , element:<About></About> }
-         ,
+           {path:'/caterogy/:id' ,
+            loader:()=>fetch('/news.json') ,
+             element: <CategoryNews></CategoryNews>},
+         {path:'/about' , element:<About></About> },
         {path:'/career' ,element:<Career></Career> },
 
 

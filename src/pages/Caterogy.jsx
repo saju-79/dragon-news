@@ -16,7 +16,7 @@ const Caterogy = () => {
    
     return (
          <div>
-            <h2 className='font-semibold text-lg text-primary px-10 py-6 bg-neutral rounded-sm '>All Caterogy</h2>
+            <h2 className='font-semibold text-2xl text-primary px-10 py-6 bg-neutral rounded-sm '>All Caterogy</h2>
            <div className="p-6 flex flex-col  w-full "> 
             {
             datas.map(d => (
