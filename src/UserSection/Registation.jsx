@@ -4,7 +4,7 @@ import { AuthContext } from '../ContextApi/AuthContext';
 import { Link, useNavigate } from 'react-router';
  
  const Registation = () => {
-    const {registation ,setUrl , setUser} = use(AuthContext);
+    const {registation  , setUser ,updateUser} = use(AuthContext);
     const navigate = useNavigate()
     const handelregistation =(e)=>{
               e.preventDefault()
@@ -13,15 +13,24 @@ import { Link, useNavigate } from 'react-router';
              const url = from.url.value;
              const email = from.email.value;
              const password = from.password.value;
-             console.log(name ,url ,email ,password)
-             setUrl(url)
+         
+             
 
             registation(email ,password)
             .then((result) =>{
-                 setUser(result.user)
+              const user = result.user
+                 updateUser({displayName : name , photoURL:url })
+                 .then(()=>{
+                       setUser({...user , displayName: name , photoURL:url}) 
+                 })
+                 .catch(e=>{
+                  console.log(e)
+                   setUser(user)
+                 })
                   navigate(location.state || '/')
             }).catch(err =>{
                 console.log(err)
+                
             })
     }
     return (

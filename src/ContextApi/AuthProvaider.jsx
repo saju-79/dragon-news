@@ -1,15 +1,15 @@
  
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../firebage/_firebage';
 import { useEffect, useState } from 'react';
 
 
 const AuthProvaider = ({children }) => {
     const[user  , setUser] = useState(null)
-    const[url  , setUrl] = useState(null)
+ 
     const[loding  , setLoding] = useState(true);
-    console.log(user ,loding)
+  
     
     // registation
     const registation = (email ,password) =>{
@@ -31,6 +31,10 @@ const AuthProvaider = ({children }) => {
         setLoding(true)
         return signInWithPopup(auth , provider)
     }
+    // updateData 
+    const updateUser = (data)=>{
+        return updateProfile(auth.currentUser , data);
+    }
        /**uer fund */
        useEffect(()=>{
             const unSubscribre = onAuthStateChanged(auth , (currentUser) =>{
@@ -43,15 +47,16 @@ const AuthProvaider = ({children }) => {
        } ,[])
     const userinfo = {
         user,
-        url ,
+    
         loding ,
         setLoding ,
-        setUrl,
+    
         setUser ,
         registation ,
         signin,
         logOut,
         googleSingIn,
+        updateUser,
 
     }
     return (

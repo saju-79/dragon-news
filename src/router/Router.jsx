@@ -15,6 +15,7 @@ import Registation from "../UserSection/Registation";
 import Ditels from "../root/NewsDitels";
 import NewsDitels from "../root/NewsDitels";
 import PrivateRouter from "../private/PrivateRouter";
+import Loding from "../componet/Loding";
  
  
  
@@ -32,6 +33,7 @@ import PrivateRouter from "../private/PrivateRouter";
         },
            {path:'/caterogy/:id' ,
             loader:()=>fetch('/news.json') ,
+              hydrateFallbackElement:<Loding></Loding>,
              element: <CategoryNews></CategoryNews>},
          {path:'/about' , element:<About></About> },
         {path:'/career' ,element:<Career></Career> },
@@ -50,6 +52,7 @@ import PrivateRouter from "../private/PrivateRouter";
       {
         path:"/news/ditels/:id" ,
          loader:()=>fetch('/news.json') ,
+         hydrateFallbackElement:<Loding></Loding>,
         element:<PrivateRouter><NewsDitels></NewsDitels></PrivateRouter>
       },
       

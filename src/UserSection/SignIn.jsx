@@ -8,8 +8,8 @@ import { AuthContext } from '../ContextApi/AuthContext';
 const SignIn = () => {
   const [masge , setMasge] = useState("");
   const navigatte =  useNavigate()
-    const {signin , user , setUser } = use(AuthContext)
- console.log(user)
+    const {signin ,    setUser  } = use(AuthContext)
+//  console.log(user)
     const handelLogin =(e)=>{
         e.preventDefault();
         setMasge("")

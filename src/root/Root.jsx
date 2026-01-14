@@ -1,14 +1,18 @@
 import React from 'react';
 import HomeLaout from '../componet/HomeLaout';
 import Navber from '../componet/Navber';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigation,  } from 'react-router';
 import RightNav from '../pages/RightNav';
 import LeftNav from '../pages/LeftNav';
 import Daynamic from '../componet/Daynamic';
  
+import Loding from '../componet/Loding';
+ 
  
 
 const Root = () => {
+    const {state} = useNavigation()
+    
     return (
         <div className='w-11/12 mx-auto py-8'>
               <HomeLaout></HomeLaout>
@@ -19,7 +23,7 @@ const Root = () => {
                  <LeftNav></LeftNav>
                 </aside>
                 <section className=' main w-1/2   p-2 rounded-sm'>
-                    <Outlet></Outlet>
+                   {state == "loading" ?<Loding></Loding> :  <Outlet></Outlet>}
                 </section>
                 <aside className='nav-right w-1/4 scroll-auto h-fit top-0   max-h-screen     p-2 rounded-sm'>
                 <RightNav></RightNav>
