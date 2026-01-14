@@ -5,6 +5,16 @@ import About from "../pages/About";
 import Career from "../pages/Career";
  
 import CategoryNews from "../pages/CategoryNews";
+import SignIn from "../UserSection/SignIn";
+ 
+import UserInfo from "../UserSection/UserInfo";
+import Navber from "../componet/Navber";
+import NewsCard from "../pages/NewsCard";
+import Registation from "../UserSection/Registation";
+
+import Ditels from "../root/Ditels";
+ 
+ 
  
 
  
@@ -26,9 +36,22 @@ import CategoryNews from "../pages/CategoryNews";
 
 
       ]
-      
- 
-
-     } 
+     },
+     {
+       path:"/auth",
+       element:<UserInfo></UserInfo> ,
+       children:[
+        {path:"/auth/login" , element:<SignIn></SignIn>},
+        {path:"/auth/registation" , element: <Registation></Registation>},
+       ]
+     },
+    /*  {
+         path:"/ditels",
+         element:<Ditels></Ditels> ,
+         children:[
+          {path:"/ditels" , element:<p>ami asuijdsnfds dsfh</p>}
+         ]
+         
+     } */
       
  ])

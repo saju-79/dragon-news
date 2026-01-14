@@ -1,11 +1,4 @@
-import React from 'react';
+import { createContext } from "react";
 
-const AuthContext = () => {
-    return (
-        <div>
-            ami auth context
-        </div>
-    );
-};
 
-export default AuthContext;
+export const AuthContext =  createContext(null)

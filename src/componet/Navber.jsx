@@ -1,11 +1,25 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../ContextApi/AuthContext';
  
 
 const Navber = () => {
+    const {user ,logOut , url , setUrl} =  use(AuthContext)
+          const handelLogOut =(e)=>{
+             e.preventDefault();
+             logOut()
+             .then( ()=>{
+
+             })
+             .catch(erre =>{
+                console.log(erre)
+             })
+          } 
+
+             
     return (
-        <div className=' flex justify-between my-4'>
-           <div className=""></div>
+        <div className=' flex justify-between p-4'>
+           <div className=" text-primary font-bold text-lg"> {user?.email} </div>
            <div className=" flex gap-5  ">
             <NavLink className={ ({isActive})=> isActive ? "font-semibold text-text-200   bg-neutral p-2 rounded-lg shadow-sm text-text-200 text-lg " : "p-2 text-accent text-lg"} to="/">Home      </NavLink>
             <NavLink className={ ({isActive})=> isActive ? "font-semibold text-text-200  bg-neutral p-2 rounded-lg shadow-sm text-text-200 text-lg" : "p-2 text-accent text-lg"} to="/about">About</NavLink>
@@ -13,8 +27,8 @@ const Navber = () => {
             
            </div>
            <div className=" flex gap-2">
-            <img src="https://i.ibb.co.com/hR0Rfq0j/user.png" alt='' />
-            <button className='btn px-10 btn-primary text-text-50 font-semibold'>Login</button>
+            <img className='w-12 h-12 rounded-full' src= {user ? user?.photoURL ? user?.photoURLe : url  : setUrl("https://i.ibb.co.com/hR0Rfq0j/user.png") } alt='' />
+            <Link to='/auth/login' >{user ? <button onClick={handelLogOut}  className='btn px-10 btn-primary text-text-50 font-semibold'>LogOut</button> : <button  className='btn px-10 btn-primary text-text-50 font-semibold'> Login</button>}</Link>
            </div>
         </div>
     );

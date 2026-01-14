@@ -1,5 +1,6 @@
 import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaEye, FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
  
 
@@ -61,7 +62,11 @@ const NewsCard = ({ news }) => {
       {/* Details */}
       <div className="card-body pt-4">
         <p className="text-gray-600 line-clamp-3">
-          {details}
+          {details.length > 200 ?
+          <>
+            {details.slice( 0 , 200)}...
+           <Link to='"/ditels"'> <span className="text-orange-500 font-bold hover:underline ">Read More</span></Link>
+          </> : details}
         </p>
 
         {/* Tags */}
@@ -69,9 +74,9 @@ const NewsCard = ({ news }) => {
           {tags?.map(tag => `#${tag}`).join(", ")}
         </p>
 
-        <p className="text-primary font-medium cursor-pointer mt-1">
+        {/* <p className="text-primary font-medium cursor-pointer mt-1">
           Read More
-        </p>
+        </p> */}
 
         {/* Footer */}
         <div className="flex items-center justify-between border-t pt-4 mt-4">
