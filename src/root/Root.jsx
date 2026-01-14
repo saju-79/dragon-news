@@ -15,15 +15,15 @@ const Root = () => {
                  <Daynamic></Daynamic>
               <Navber></Navber>
                <div className=" flex gap-5   ">
-                <section className='nav-left w-1/4 sticky top-0 h-screen   p-2 rounded-sm'>
+                <aside className='nav-left w-1/4 sticky top-0 h-fit   p-2 rounded-sm'>
                  <LeftNav></LeftNav>
-                </section>
+                </aside>
                 <section className=' main w-1/2   p-2 rounded-sm'>
                     <Outlet></Outlet>
                 </section>
-                <section className='nav-right w-1/4   max-h-screen     p-2 rounded-sm'>
+                <aside className='nav-right w-1/4 scroll-auto h-fit top-0   max-h-screen     p-2 rounded-sm'>
                 <RightNav></RightNav>
-                </section>
+                </aside>
                </div>
          </div>
     );

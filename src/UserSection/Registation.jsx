@@ -1,10 +1,11 @@
  import React, { use } from 'react';
 import { MdDriveFileRenameOutline, MdInsertPhoto } from 'react-icons/md';
 import { AuthContext } from '../ContextApi/AuthContext';
+import { Link, useNavigate } from 'react-router';
  
  const Registation = () => {
-    const {registation ,setUrl} = use(AuthContext);
-   
+    const {registation ,setUrl , setUser} = use(AuthContext);
+    const navigate = useNavigate()
     const handelregistation =(e)=>{
               e.preventDefault()
              const from =e.target ;
@@ -17,7 +18,8 @@ import { AuthContext } from '../ContextApi/AuthContext';
 
             registation(email ,password)
             .then((result) =>{
-                console.log(result.user)
+                 setUser(result.user)
+                  navigate(location.state || '/')
             }).catch(err =>{
                 console.log(err)
             })
@@ -129,7 +131,7 @@ import { AuthContext } from '../ContextApi/AuthContext';
             </div>
           <button type='submit' className="btn btn-neutral bg-primary w-11/12 mx-auto mt-4 py-6">Register</button>
         </form>
-       
+        <p className=' p-2'> Dont’t Have An Account ?<Link to="/auth/login" className='text-secondary font-bold'> Login</Link></p>
       </div>
     </div>
     );

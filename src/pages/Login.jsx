@@ -4,10 +4,16 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 const provider = new GoogleAuthProvider();
 const Login = () => {
-  const {googleSingIn} =use(AuthContext);
+  const {googleSingIn , setUser ,} =use(AuthContext);
   const handeLogin =(e)=>{
           e.preventDefault();
           googleSingIn(provider)
+          .then(result =>{
+             setUser(result.user)
+          })
+          .catch(err =>{
+            console.log(err)
+          })
   }
   const handegithub =(e)=>{
           e.preventDefault();

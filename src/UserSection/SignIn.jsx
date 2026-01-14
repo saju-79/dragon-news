@@ -1,23 +1,29 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import Navber from '../componet/Navber';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../ContextApi/AuthContext';
  
 
 
 const SignIn = () => {
-    const {signin , user } = use(AuthContext)
+  const [masge , setMasge] = useState("");
+  const navigatte =  useNavigate()
+    const {signin , user , setUser } = use(AuthContext)
  console.log(user)
     const handelLogin =(e)=>{
         e.preventDefault();
+        setMasge("")
         const from = e.target ;
         const email = from.email.value;
         const password = from.password.value;
           signin(email ,password)
-          .then(result =>{
-            console.log((result).user)
+          .then((result) =>{
+             setUser(result.user)
+             navigatte(location.state || '/')
+              setMasge("login fu")
           }).catch(erre =>{
             console.log(erre)
+            setMasge("Password not mach")
           })
         
     }
@@ -89,6 +95,7 @@ const SignIn = () => {
           <button type='submit' className="btn btn-neutral bg-primary w-11/12 mx-auto mt-4 py-6">Login</button>
         </form>
         <p className=' p-2'> Dont’t Have An Account ?<Link to="/auth/registation" className='text-secondary font-bold'> Register</Link></p>
+        <p className='text-secondary'>{masge}</p>
       </div>
     </div>
    

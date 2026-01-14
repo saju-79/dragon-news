@@ -12,7 +12,9 @@ import Navber from "../componet/Navber";
 import NewsCard from "../pages/NewsCard";
 import Registation from "../UserSection/Registation";
 
-import Ditels from "../root/Ditels";
+import Ditels from "../root/NewsDitels";
+import NewsDitels from "../root/NewsDitels";
+import PrivateRouter from "../private/PrivateRouter";
  
  
  
@@ -45,13 +47,10 @@ import Ditels from "../root/Ditels";
         {path:"/auth/registation" , element: <Registation></Registation>},
        ]
      },
-    /*  {
-         path:"/ditels",
-         element:<Ditels></Ditels> ,
-         children:[
-          {path:"/ditels" , element:<p>ami asuijdsnfds dsfh</p>}
-         ]
-         
-     } */
+      {
+        path:"/news/ditels/:id" ,
+         loader:()=>fetch('/news.json') ,
+        element:<PrivateRouter><NewsDitels></NewsDitels></PrivateRouter>
+      },
       
  ])

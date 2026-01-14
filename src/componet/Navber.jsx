@@ -1,10 +1,11 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../ContextApi/AuthContext';
+
  
 
 const Navber = () => {
-    const {user ,logOut , url , setUrl} =  use(AuthContext)
+    const {user ,logOut , url , setUrl } =  use(AuthContext)
           const handelLogOut =(e)=>{
              e.preventDefault();
              logOut()
@@ -27,11 +28,11 @@ const Navber = () => {
             
            </div>
            <div className=" flex gap-2">
-            <img className='w-12 h-12 rounded-full' src= {user ? user?.photoURL ? user?.photoURLe : url  : setUrl("https://i.ibb.co.com/hR0Rfq0j/user.png") } alt='' />
+            <img className='w-12 h-12 rounded-full' src= { user ? setUrl('https://i.ibb.co.com/hR0Rfq0j/user.png') :  url } alt='' />
             <Link to='/auth/login' >{user ? <button onClick={handelLogOut}  className='btn px-10 btn-primary text-text-50 font-semibold'>LogOut</button> : <button  className='btn px-10 btn-primary text-text-50 font-semibold'> Login</button>}</Link>
            </div>
         </div>
     );
 };
-
+  
 export default Navber;

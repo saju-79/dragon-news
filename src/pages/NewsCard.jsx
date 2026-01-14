@@ -15,6 +15,7 @@ const NewsCard = ({ news }) => {
     author,
     details,
     tags,
+    id ,
   } = news;
 
   return (
@@ -65,7 +66,7 @@ const NewsCard = ({ news }) => {
           {details.length > 200 ?
           <>
             {details.slice( 0 , 200)}...
-           <Link to='"/ditels"'> <span className="text-orange-500 font-bold hover:underline ">Read More</span></Link>
+           <Link to={`/news/ditels/${id}`}> <span className="text-orange-500 font-bold hover:underline ">Read More</span></Link>
           </> : details}
         </p>
 

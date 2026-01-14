@@ -23,7 +23,7 @@ const Caterogy = () => {
                 <NavLink
                 to={`/caterogy/${d.id}`}
                 key={d.id}
-                className='mt-6 px-10  text-info w-full font-semibold  hover:bg-neutral  py-6 p-4 rounded-sm  text-xl '
+                className={ ({isActive})=> isActive ? " mt-6 px-10  text-info w-full font-semibold bg-neutral hover:bg-neutral  py-6 p-4 rounded-sm text-center text-xl" :"mt-6 px-10 text-center  text-info w-full font-semibold  hover:bg-neutral  py-6 p-4 rounded-sm  text-xl " }
                 >{d.name}</NavLink>
             ))
             }
